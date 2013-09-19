@@ -65,6 +65,21 @@ Las operaciones definidas en el c\'aculo sobre espacios de tripletes aceptan com
 Un patr\'on recibido en una operaci\'on puede ser aplicado a un conjunto de tripletes $(< p,v >$) o a un espacio de tripletes ($< p,\theta >$), obteni\'endose como resultado una colecci\'on de substituciones para las variables del patr\'on. Aplicando estas substituciones al patr\'on el conjunto de tripletes que satisfacen dicho patr\'on es obtenido finalmente. El resultado de la aplicaci\'on del patr\'on puede ser el conjunto vac\'io, si ninguna substituci\'on es obtenida.\\
 Una definici\'on exacta de la sintaxis y sem\'antica operacional del c\'alculo, se pueden encontrar en las tablas \ref{tabla1} y \ref{tabla2}.\\
 
+\begin{table}
+\vspace{2.4in}
+\caption{Sintaxis formal del calculo relativa al espacio de tripletes y elementos b\'asicos.}
+\includegraphics[width=0.8\textwidth]{tabla1}
+\label{tabla1}
+\end{table}
+
+
+\begin{table}
+\vspace{2.4in}
+\caption{Sem\'antica operacional del calculo relativa al espacio de tripletes y operaciones b\'asicas.}
+\includegraphics[width=0.8\textwidth]{tabla2}
+\label{tabla2}
+\end{table}
+
 La sem\'antica operacional del c\'alculo para la sintaxis formal aqu\'i introducida sigue formalizaciones anteriores propuestas para otros sistemas de espacios de tuplas de tipo Linda \cite{linda}. En particular, hemos elegido una sem\'antica con ordenaci\'on para las operaciones sobre el espacio de tripletes. Como consecuencia, la emisi\'on y aplicaci\'on de mensajes se puede considerar como una \'unica operaci\'on at\'omica. Se puede demostrar que los sistemas de tipo Linda con semanticas con con ordenaci\'on son Turing completos \cite{busi2000expressiveness}.\\
 La sem\'antica operacional descrita en la tabla \ref{tabla2}, define una relaci\'on ($\rightarrow$) para las operaciones como la m\'as simple interpretaci\'on satisfaciendo las reglas ($1$) – ($10$). De estas, las comprendidas entre la regla ($4$)  y la regla ($6$) definen las principales operaciones sobre espacios de tripletes as\'i como la reducci\'on de estas reglas modifican los tripletes almacenados en el espacio de tripletes.\\
 La regla ($7$) muestra la sem\'antica de la operaci\'on swap como una combinaci\'on en un s\'olo paso de reducci\'on de la sem\'antica de las operaciones in y out. Por su parte, las reglas ($8$) y ($9$) definen las sem\'antica para la operaci\'on notify. Mostrando su relaci\'on con la operaci\'on in y out as\'i como el patr\'on pasado como argumento a la operaci\'on notify es aplicado a los tripletes insertados o eliminados por las operaciones in y out.\\
@@ -89,6 +104,14 @@ En primer lugar, en las concepciones originales de los espacios de tripletes, el
 Otra importante identidad entre servicios \textit{REST} y espacios de tripletes introducida ha sido la capacidad de asociar un \textit{URI} a un espacio de tripletes. De este modo, los procesos pueden ganar acceso a los tripletes de un recurso almacenados en un espacio de tripletes a trav\'es de los \textit{URIs} codificados en sus componentes. Desde este punto de vista, los espacios de tripletes pueden ser considerados no s\'olo procesos din\'amicos, sino como procesos m\'obiles tal y como los descritos en el C\'alculo Pi, ya que estos procesos podr\'ian coordinarse a trav\'es de canales con nombre (\textit{URI}) que se intercambiar\'ian dentro de los componentes incluidos en los mensajes (tripletes) enviados y recibidos por los procesos.\\
 En las tablas \ref{tabla1} y \ref{tabla2} se definen la sintaxis y sem\'antica operacional que permite describir los espacios de tripletes como procesos din\'amicos mediante la definici\'on de la composici\'on paralela de procesos ($1$) as\'i como la congruencia estructural de procesos ($2$) \cite{pi_calculus}. Por su parte ($3$) define el proceso de creaci\'on de un nuevo proceso y por \'ultimo ($10$) define un tipo sencillo de ejecuci\'on condicional.\\
 Adem\'as de estas primitivas para la creaci\'on y composici\'on de procesos, el c\'alculo debe ser extendido con nuevas operaciones, como las mostradas en la tabla \ref{tabla3}, que corresponden a variaciones de las operaciones descritas en el C\'alculo Pi Poli\'adico \cite{polyadic_pi}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Sem\'antica operacional del c\'alculo relativa a la comunicaci\'on entre procesos.}
+\includegraphics[width=0.8\textwidth]{tabla3}
+\label{tabla3}
+\end{table}
+
 En dichas operaciones, los mensajes pueden ser enviados a trav\'es canales con nombre representados como \textit{URIs} ($\mu$). Los mensajes pueden ser de dos tipos, peticiones ($req$) o respuestas ($resp$) y los procesos pueden enviar y recibir ambos tipos de mensajes. A su vez, los mensajes se componen de un m\'etodo ($m$), un patr\'on ($p$) y un valor ($v$) en el caso de las peticiones y de un valor ($v$) y un c\'odigo ($c$) en el caso de las respuestas. Adicionalmente, tambi\'en se define una operaci\'on para introducir un nuevo identificador (\textit{URI}) en la computaci\'on. ($new\, \mu\, in\,P$).\\
 La sem\'antica operacional para estas operaciones se introduce en la tabla \ref{tabla3} de acuerdo con la sem\'antica definida en el C\'alculo Pi Poli\'adico. Las reglas ($11$) y ($12$) son una adaptaci\'on a la sintaxis de nuestro c\'alculo de la regla de comunicaci\'on del C\'alculo Pi, mostrando la reacci\'on entre procesos enviando y recibiendo mensajes. Las reglas ($13$) y ($14$), imponen restricciones sobre el orden en que peticiones y respuestas deben ser intercambiados. Seg\'un la sem\'antica definida, sin un proceso env\'ia un mensaje con una petici\'on a un proceso, debe esperar un mensaje con una respuesta  tras un n\'umero finito de reducciones a trav\'es del mismo \textit{URI}. De modo sim\'etrico, si un proceso recibe una petici\'on a trav\'es de un \textit{URI} debe enviar una respuesta tras un cierto n\'umero de reducciones.\\
 
@@ -113,11 +136,29 @@ Las principales caracter\'isticas de esta formalizaci\'on de la computaci\'on ba
 \end{itemize}
 
 Usando este modelo, una posible formalizaci\'on param\'etrica de un proceso sem\'antico \textit{REST} $S_{REST}(\theta,\mu)$, con un espacio de tripletes asociado ($\theta$), identificado por un \textit{URI} ($\mu$)  y que sigue la sem\'antica de la interfaz homog\'enea \textit{REST}, se muestra en la Tabla \ref{tabla4}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Descripci\'on param\'etrica de un recurso \textit{REST} sem\'antico simple.}
+\includegraphics[width=0.8\textwidth]{tabla4}
+\label{tabla4}
+\end{table}
+
+
 Seg\'un esta descripci\'on, el proceso recurso recibe espera un mensaje de tipo petici\'on y comprueba el tipo de la operaci\'on del mensaje.
 Si es una petici\'on de tipo \textit{GET} incluyendo un patr\'on $p$, utiliza una operaci\'on sobre el espacio de tripletes $rd$ para leer sin extraer los tripletes que satisfagan el patr\'on y enviarlos a trav\'es de su \textit{URI} asociado al proceso que realiz\'o la petici\'on a trav\'es de un mensaje de tipo respuesta.\\
 Si la petici\'on es de tipo \textit{POST}, incluyendo un patr\'on p con una \'unica variable, el proceso genera un nuevo \textit{URI} $\mu$ y lo aplica al patr\'on para obtener un nuevo conjunto de tripletes que escribe en su espacio de tripletes asociado $\theta$. Por \'ultimo un nuevo proceso recurso para los tripletes, espacio de tripletes y \textit{URI} asociada es iniciado por el proceso antes generar el mensaje respuesta al proceso que inici\'o la petici\'on.\\
 Las peticiones \textit{PUT} son definidas a trav\'es de una operaci\'on \textit{swap} que aplica el patr\'on y nuevos valores enviados por un proceso en el mensaje de petici\'on. Las peticiones \textit{DELETE} por su parte, suponen la finalizaci\'on de la ejecuci\'on del proceso y el borrado del espacio de tripletes asociado de todos los tripletes asociados al \textit{URI} identificador del recurso.\\
-La Figura \ref{figura1} muestra una representaci\'on gr\'afica de un posible modelo de ejecuci\'on de computaci\'on sem\'antica. Dicho modelo se compone de tres dominios que constituyen cada uno una localizaci\'on de computaci\'on independiente con su espacio de tripletes. Cada uno de ellos da soporte a un proceso recurso identificado por los \textit{URIs} 1, 2 y 3. Adem\'as, la localizaci\'on de computaci\'on constituida por el \textit{dominio-2} incluye tambi\'en un proceso agente que se puede comunicar con el servicio en el \textit{dominio-3} a trav\'es del \textit{URI} 3 almacenado en el espacio de tripletes presente en el \textit{dominio-2}. La figura tambi\'en muestra una localizaci\'on de computaci\'on adicional, que modela una aplicaci\'on web que contiene su propio espacio de tripletes y dos procesos agente. Dichos procesos agente pueden enviar mensajes de petici\'on a los servicios en los dominios 1 y 2 a trav\'es de las \textit{URIs} 1 y 2 almacenadas en el espacio de tripletes de la aplicaci\'on cliente. Por su parte el proceso recurso y el proceso agente localizado en el dominio-2 pueden coordinarse a trav\'es de operaciones sobre el espacio de tripletes del dominio,  por ejemplo a trav\'es de una operaci\'on notify, de tal modo que si el proceso recurso recibe un determinado mensaje de petici\'on, esto desencadene una notificaci\'on en el cliente para que pueda realizar una operaci\'on como reacci\'on, por ejemplo, enviar un mensaje de petici\'on al proceso recurso en el \textit{dominio-3}.
+La Figura \ref{figura1} muestra una representaci\'on gr\'afica de un posible modelo de ejecuci\'on de computaci\'on sem\'antica. Dicho modelo se compone de tres dominios que constituyen cada uno una localizaci\'on de computaci\'on independiente con su espacio de tripletes.\\
+
+\begin{figure}
+\vspace{2.4in}
+\caption{Ejemplo de computaci\'on \textit{REST} sem\'antica.}
+\includegraphics[width=0.5\textwidth]{figura1}
+\label{figura1}
+\end{figure}
+
+Cada uno de ellos da soporte a un proceso recurso identificado por los \textit{URIs} 1, 2 y 3. Adem\'as, la localizaci\'on de computaci\'on constituida por el \textit{dominio-2} incluye tambi\'en un proceso agente que se puede comunicar con el servicio en el \textit{dominio-3} a trav\'es del \textit{URI} 3 almacenado en el espacio de tripletes presente en el \textit{dominio-2}. La figura tambi\'en muestra una localizaci\'on de computaci\'on adicional, que modela una aplicaci\'on web que contiene su propio espacio de tripletes y dos procesos agente. Dichos procesos agente pueden enviar mensajes de petici\'on a los servicios en los dominios 1 y 2 a trav\'es de las \textit{URIs} 1 y 2 almacenadas en el espacio de tripletes de la aplicaci\'on cliente. Por su parte el proceso recurso y el proceso agente localizado en el dominio-2 pueden coordinarse a trav\'es de operaciones sobre el espacio de tripletes del dominio,  por ejemplo a trav\'es de una operaci\'on notify, de tal modo que si el proceso recurso recibe un determinado mensaje de petici\'on, esto desencadene una notificaci\'on en el cliente para que pueda realizar una operaci\'on como reacci\'on, por ejemplo, enviar un mensaje de petici\'on al proceso recurso en el \textit{dominio-3}.
 
 \section{Modelo arquitect\'onico}
 
@@ -142,6 +183,14 @@ De forma adicional, introduciremos algunas caracter\'isticas convenientes que no
 \subsection{Declaraci\'on de recursos enlazados}
 
 En la tabla \ref{tabla5} se encuentra la descripci\'on \textit{RDF} de un ejemplo de servicio web \textit{REST} sem\'antico, que se almacenar\'a en una base de datos relacional, de acuerdo con el modelo de servicio web que proponemos.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Descripci\'on \textit{RDF} de un servicio \textit{REST} sem\'antico.}
+\includegraphics[width=0.8\textwidth]{tabla5}
+\label{tabla5}
+\end{table}
+
 Esta descripci\'on describe dos aspectos b\'asicos del modelo de servicio:
 
 \begin{itemize}
@@ -182,6 +231,15 @@ En la siguientes secciones analizaremos como se puede transformar cada tipo de o
 
 Las peticiones  \textit{HTTP} \textit{GET} sobre un determinado \textit{URI} que identifica a un \textit{grafo con nombre} en el repositorio de grafos \textit{RDF}, se transforman en peticiones \textit{CONSTRUCT} \textit{SPARQL} que recuperan todos los tripletes almacenados en dicho \textit{grafo con nombre}.\\
 La sintaxis de la consulta \textit{CONSTRUCT} \textit{SPARQL} se muestra en la tabla \ref{tabla6}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Consulta \textit{SPARQL} para una peticion \textit{HTTP} \textit{GET}.}
+\includegraphics[width=0.8\textwidth]{tabla6}
+\label{tabla6}
+\end{table}
+
+
 La sem\'antica de esta consulta \textit{SPARQL} coincide con la sem\'antica descrita en la propuesta de est\'andar \textit{Protocolo SPARQL HTTP Uniforme para la Gesti\'on de Grafos RDF} de la \textit{W3C}.\\
 Adicionalmente, las peticiones \textit{GET} \textit{HTTP} pueden especificar dos par\'ametros \textit{\_pageSize} y textit{\_page} para modificar el n\'umero de tripletes en el grafo de destino que ser\'an recuperados por la consulta \textit{SPARQL} mediante el uso de las cl\'ausulas \textit{LIMIT} y \textit{OFFSET} del lenguaje \textit{SPARQL} al mismo tiempo que se ordena el conjunto de tripletes recuperados por sujeto, mediante el uso de la cla\'usula \textit{ORDER BY ?s}. Estos par\'ametros han sido propuestos en la propuesta \textit{LD-API} y permiten implementar paginaci\'on en el cliente \textit{HTTP} realizando la petici\'on.
 
@@ -189,8 +247,33 @@ Adicionalmente, las peticiones \textit{GET} \textit{HTTP} pueden especificar dos
 
 Las  peticiones \textit{HTTP} \textit{POST} para la creaci\'on de un nuevo recurso, son traducidas como peticiones \textit{INSERT DATA} del lenguaje \textit{SPARQL UPDATE} que insertar\'an los datos enviados en el cuerpo de la petici\'on \textit{HTTP} en un nuevo \textit{grafo con nombre} cuya \textit{URI} deber\'a generar el sistema, de acuerdo con el mecanismo de generaci\'on de identificadores elegido en la descripci\'on de la \textit{API}.\\
 La sintaxis de la consulta \textit{SPARQL} UPDATE se muestra en la tabla \ref{tabla7}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Consulta \textit{SPARQL} para una petici\'on \textit{HTTP} \textit{POST}.}
+\includegraphics[width=0.8\textwidth]{tabla7}
+\label{tabla7}
+\end{table}
+
 Una consideraci\'on importante es la distinci\'on que se debe hacer entre el \textit{URI} generado para identificar el \textit{grafo con nombre} que se almacenar\'a en el repositorio de grafos \textit{RDF} y el \textit{URI} que identifica el recurso \textit{RDF} en los tripletes almacenados ene el \textit{grafo con nombre} de acuerdo con la pr\'actica est\'andar a la que ha llegado la comunidad de Datos Enlazados Abiertos durante la discusi\'on de la relaci\'on entre recursos de informaci\'on y no recursos de informaci\'on \cite{fielding2005httprange}.\\
 La siguiente tabla \ref{named_graph_vs_resource_uri} muestra las diferencias entre ambas \textit{URIs}.\\
+
+\begin{table}
+\centering
+\caption{\textit{Grafos con nombre} frente a recursos \textit{RDF}.}
+\label{named_graph_vs_resource_uri}
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+\textbf{\textit{Grafo con nombre}} & \textbf{\textit{Recurso RDF}} \\\hline
+Identificado por un \textit{URI}. & Identificado por un \textit{URI}. \\
+Recurso de informaci\'on. & No recurso de informaci\'on.\\
+Identifica el \textit{grafo con nombre}. & Aparece dentro del \textit{grafo con nombre}.\\
+Desreferenciable usando \textit{HTTP} & No desreferenciable usando \textit{HTTP}\\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
 Sin embargo, ambas \textit{URIs} est\'an relacionadas, debiendo ser posible para un cliente web que se encuentre con la \textit{URI} del recurso formando parte de un triplete \textit{RDF} en otro grafo, seguir un enlace que desencadene una petici\'on \textit{HTTP} sobre la \textit{URI} del \textit{grafo con nombre} que almacena los datos del recurso.\\
 Adem\'as, seg\'un los principios arquitect\'onicos \textit{REST}, la responsabilidad de generar la \textit{URI} del recurso \textit{HTTP}, lo que en nuestro caso significa generar un \textit{URI} para el \textit{grafo con nombre} y para el recurso \textit{RDF} almacenado en dicho grafo, depende del proveedor de la \textit{API}, no del cliente, por lo que la \textit{URI} del recurso \textit{RDF} no puede venir dada en los tripletes \textit{RDF} enviados por el cliente en la petici\'on \textit{HTTP}.\\
 Nuestra soluci\'on a nuestro problema viene dada por un mecanismo que permite al cliente especificar un patr\'on de tripletes \textit{RDF} que se transformar\'a en el grafo \textit{RDF} final que se almacenar\'a en el repositorio \textit{RDF}, una vez que el servicio ha generado \textit{URIs} para el \textit{grafo con nombre} y el recurso \textit{RDF} mediante el mecanismo especificado en la descripci\'on de la \textit{API}.\\
@@ -212,11 +295,28 @@ El uso de un \textit{hash URI} para identificar al recurso \textit{RDF}, que usa
 
 Las peticiones \textit{HTTP} \textit{PUT} son interpretadas por el servicio como un intento de reemplazar el contenido del recurso asociado por un nuevo contenido, en nuestro caso, un nuevo grafo \textit{RDF} que se almacenar\'a en el mismo \textit{grafo con nombre} asociado al recurso \textit{HTTP}.\\
 Esta sem\'antica queda recogida en la combinaci\'on de consultas \textit{SPARQL Update} \textit{DROP SILENT} y \textit{INSERT DATA} sobre el repositorio de grafos \textit{RDF} en las que se traduce la petici\'on \textit{HTTP}. La tabla \ref{tabla8} muestra la sintaxis de dicha consulta.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Consulta \textit{SPARQL} para una petici\'on \textit{HTTP} \textit{PUT}.}
+\includegraphics[width=0.8\textwidth]{tabla8}
+\label{tabla8}
+\end{table}
+
 El cuerpo de la petici\'on \textit{PUT} debe contener s\'olo tripletes que usan como sujeto el identificador del recurso \textit{RDF} \textit{graph\_uri\#self} o identificadores de nodos an\'onimos \textit{RDF}. El servicio debe cancelar el procesamiento de la petici\'on y devolver un c\'odigo de error \textit{HTTP} \textit{403 forbidden} si esta condici\'on no se cumple.
 
 \subsubsection{Peticiones \textit{DELETE}}
 
 Por \'ultimo, las peticiones \textit{HTTP} \textit{DELETE} se traducen como peticiones \textit{DROP GRAPH} \textit{SPARQL}, que suponen la eliminaci\'on del \textit{grafo con nombre} y toda la informaci\'on asociada a dicho grafo. La tabla \ref{tabla9} muestra la sintaxis de la petici\'on.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Consulta \textit{SPARQL} para una petici\'on \textit{HTTP} \textit{DELETE}.}
+\includegraphics[width=0.8\textwidth]{tabla9}
+\label{tabla9}
+\end{table}
+
+
 El procesamiento de la petici\'on \textit{HTTP} \textit{DELETE} supone la destrucci\'on del recurso \textit{HTTP} identificado por el \textit{URI} del \textit{grafo con nombre}. Cualquier petici\'on adicional a la \textit{URI} del recurso \textit{HTTP} debe ser resuelta por el servicio con una respuesta \textit{HTTP} \textit{404 not found}.
 
 \subsection{Serializaci\'on de resultados}
@@ -246,12 +346,55 @@ Siguiendo el esp\'iritu de la comunidad de Datos Enlazados Abiertos, en esta sec
 
 Como vimos en el cap\'itulo dedicado al estado del arte en este documento, una de las contribuciones de la comunidad de Datos Enlazados Abiertos ha sido el desarrollo de la propuesta de recomendaci\'on \textit{W3C} \textit{R2RML} \cite{r2rml} para la traducci\'on de datos relaciones en tripletes \textit{RDF}.\\
 \textit{R2RML} consiste en un vocabulario gen\'erico que puede usarse para transformar un esquema relacional en tripletes \textit{RDF}. Una descripci\'on formal simplificada de la sintaxis de \textit{R2RML} se muestra en la tabla \ref{tabla10} como una gram\'atica \textit{EBNF}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Sintaxis \textit{EBNF} de \textit{R2RML}.}
+\includegraphics[width=0.8\textwidth]{tabla10}
+\label{tabla10}
+\end{table}
+
+
 Este modelo formaliza \textit{R2RML} como una traducci\'on de una colecci\'on de \textit{TableMappings} por cada tabla del esquema relacional que se intenta transformar en tripletes \textit{RDF}. Cada \textit{TableMapping} describe como los datos almacenados en la tabla se deben transformar en \textit{quads} \textit{RDF}, tripletes aumentados consistentes en sujeto, predica, objeto y un \textit{grafo con nombre}. Los componentes de un \textit{quad} son generados usando un \textit{TermMapping} definido en el \textit{TableMapping}.\\
 Cada \textit{TermMapping} puede ser constante o variable. Los \textit{TermMappings} constantes asignan un \textit{URI} o literal \textit{RDF} para el valor de ese componente en el quad \textit{RDF} que se va a generar. Por su parte los \textit{TermMappings} variables pueden hacer referencia a una columna en el esquema relacional de donde el valor para el componente del \textit{quad} ser\'a extra\'ido.
 Por su parte, el est\'andar \textit{SPARQL 1.1 Update} describe un lenguaje com\'un para la recuperaci\'on y modificaci\'on de grafos \textit{RDF} con una sintaxis similar a la del lenguaje de consulta relacional \textit{SQL}. La principal unidad usada para construir consultas \textit{SPARQL} son los \textit{QuadPatterns} que pueden ser aplicados sobre los tripletes almacenados en un grafo \textit{RDF}. La tabla \ref{tabla11} formaliza la noci\'on de un \textit{QuadPattern} con sus posible componentes, variables y constantes.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Sintaxis de los \textit{QuadPatterns}.}
+\includegraphics[width=0.8\textwidth]{tabla11}
+\label{tabla11}
+\end{table}
+
+
 \textit{R2RML} describe una transformaci\'on desde el modelo relacional al modelo de datos de \textit{RDF}. Con el fin de usar un documento \textit{R2RML} para construir una transformaci\'on gen\'erica de consultas \textit{SPARQL 1.1 Update} sobre un grafo \textit{RDF} en consultas \textit{SQL} sobre un esquema relacional, es necesario describir una transformaci\'on inversa a la especificada por dicho documento \textit{R2RML}. La figura \ref{figura2} muestra el proceso propuesto para llevar a cabo esa transformaci\'on, as\'i como el papel que el documento \textit{R2RML} juega en dicho proceso.\\
+
+\begin{figure}
+\vspace{2.4in}
+\caption{Diferentes transformaciones codificadas en un documento \textit{R2RML}}
+\includegraphics[width=0.5\textwidth]{figura2}
+\label{figura2}
+\end{figure}
+
+
 El algoritmo descrito en la tabla \ref{alg1}, especifica en la funci\'on \textit{buildQuadMatchers} como llevar a cabo esa transformaci\'on inversa, generando un conjunto de \textit{QuadMatchers} para un conjunto de \textit{TripleMappers} de una descripci\'on \textit{R2RML} tomada como datos de entrada.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Algoritmo 1: Construcci\'on de \textit{QuadMatcher} para una tranformaci\'on \textit{R2RML}.}
+\includegraphics[width=0.8\textwidth]{algoritmo1}
+\label{alg1}
+\end{table}
+
 El listado del algoritmo mostrado en la tabla \ref{alg2} describe a su vez un procedimiento para comprobar si un \textit{QuadMatcher} es compatible con un \textit{QuadPattern} en una consulta \textit{SPARQL}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Algoritmo 2: Procedimiento para comprobar si un \textit{QuadPattern} y un \textit{QuadMatcher} son compatibles.}
+\includegraphics[width=0.8\textwidth]{algoritmo2}
+\label{alg2}
+\end{table}
+
 En las siguientes secciones describiremos algoritmos que permiten usar la compatibilidad entre \textit{QuadMatchers} y \textit{QuadPatterns} para ejecutar consultas \textit{SPARQL} \textit{SELECT}, \textit{INSERT DATA} y \textit{DELETE} sobre datos relacionales con una transformaci\'on \textit{R2RML} asociada. Estas operaciones son suficientes para implementar las consultas sobre el repositorio de grafos \textit{RDF} descritas en la secci\'on anterior de este cap\'itulo como transformaciones de las operaciones \textit{HTTP} sobre recursos \textit{REST} sem\'anticos en el modelo arquitect\'onico de servicios propuesto. Las consultas \textit{DROP GRAPH} usadas en dicho modelo pueden ser transformadas en operaciones \textit{DELETE} equivalentes donde todos los tripletes del grafo son eliminados.
 
 \subsubsection{Consultas \textit{SPARQL} \textit{SELECT}}
@@ -259,17 +402,57 @@ En las siguientes secciones describiremos algoritmos que permiten usar la compat
 La transformaci\'on de consultas \textit{SPARQL} SELECT que proponemos se basa en el trabajo de \cite{chebotko2009semantics}, pero modificado para utilizar una transformaci\'on \textit{R2RML} como base, donde algunas de las restricciones que impone no son v\'alidas, como por ejemplo, el hecho de que la tabla de donde se extraen los componentes de un quad \textit{RDF} debe ser \'unica.\\
 En el algoritmo de la tabla \ref{alg3} se muestra un procedimiento para transformar una consulta \textit{SPARQL SELECT} transformada en un conjunto de \textit{QuadPatterns} en una consulta \textit{SQL SELECT} mediante la b\'usqueda de los \textit{QuadMatchers} compatibles con los \textit{QuadPatterns} que luego son unidos mediante una cl\'ausula \textit{UNION} de \textit{SQL}.
 
+\begin{table}
+\vspace{2.4in}
+\caption{Algoritmo 3: Composici\'on de una consulta \textit{SELECT} para un \textit{QuadPattern} y un conjunto de \textit{QuadMatchers}.}
+\includegraphics[width=0.8\textwidth]{algoritmo3}
+\label{alg3}
+\end{table}
+
+
 \subsubsection{Consultas \textit{SPARQL} \textit{INSERT DATA}}
 
 El la tabla \ref{alg4} contiene un algoritmo, que  muestra un procedimiento para la inserci\'on de un \textit{QuadPattern} con todos sus t\'erminos constantes en un esquema relacional con una transformaci\'on \textit{R2RML} asociada.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Algoritmo 4: Inserci\'on de un \textit{QuadPattern} para un conjunto de \textit{QuadMatchers}.}
+\includegraphics[width=0.8\textwidth]{algoritmo4}
+\label{alg4}
+\end{table}
+
+
 El principal problema que se debe solucionar para llevar a cabo la inserci\'on es que es posible encontrar m\'as de un \'unico \textit{QuadMatcher} compatible con el componente del QuadPattern donde llevar a cabo la inserci\'on.\\
 Como muestra la figura \ref{figura3}, el algoritmo propuesto funciona construyendo un \'arbol con las posibles opciones de inserci\'on encontradas y despu\'es selecciona aquella potencial inserci\'on que minimiza una m\'etrica de coste seg\'un descrita en el algoritmo de la tabla \ref{alg5}.
+
+\begin{figure}
+\vspace{2.4in}
+\caption{Inserci\'on de dos \textit{quads}}
+\includegraphics[width=0.5\textwidth]{figura3}
+\label{figura3}
+\end{figure}
+
+\begin{table}
+\vspace{2.4in}
+\caption{Algoritmo 5: M\'etrica de coste.}
+\includegraphics[width=0.8\textwidth]{algoritmo5}
+\label{alg5}
+\end{table}
 
 
 \subsubsection{Consultas \textit{SPARQL} \textit{DELETE WHERE}}
 
 Para traducir consultas \textit{DELETE} \textit{SPARQL} en consultas \textit{SQL} equivalentes dada una transformaci\'on \textit{R2RML} de un esquema relacional, el primer paso consiste en transformar la cl\'ausula \textit{WHERE} de la consulta \textit{SPARQL} en una consulta \textit{SELECT} \textit{SQL} y una vez ejecutada usando el algoritmo previamente descrito, usar los resultados obtenidos para aplicarlos sobre el patr\'on de la cl\'ausula \textit{SELECT} para obtener el conjunto final de quads que deben ser eliminados del grafo \textit{RDF}.\\
 El algoritmo de la tabla \ref{alg6} describe un procedimiento para eliminar los quads almacenados en un esquema relacional con una transformaci\'on \textit{R2RML} asociada. El algoritmo actualiza las columnas de las tablas asociadas por la transformaci\'on \textit{R2RML} a las propiedades \textit{RDF} y objetos con valores nulos, en vez de eliminar todo el quad, ya que la columna sujeto puede ser compartida por otros tripletes almacenados en la misma fila.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Algoritmo 6: Composici\'on de una consulta para eliminar un \textit{QuadPattern} para un conjunto de \textit{QuadMatchers}.}
+\includegraphics[width=0.8\textwidth]{algoritmo6}
+\label{alg6}
+\end{table}
+
+
 Tras eliminar todos los quads, la funci\'on removeEmptyRows elimina todas aquellas filas en las tablas de la transformaci\'on \textit{R2RML} donde todos los valores para las columnas propieda y objeto tienen valores nulos.
 
 \subsection{Un repositorio \textit{RDF} con soporte \textit{SPARQL 1.1 Update} para aplicaciones \textit{JavaScript}}
@@ -290,6 +473,14 @@ El repositorio est\'a contenido en una biblioteca \textit{JavaScript} que puede 
 La biblioteca se ha dise\~nado para tomar ventaja de las caracter\'isticas modernas que incluyen las \'ultimas versiones de los navegadores web, si se encuentran disponibles, como la ejecuci\'on multi-hilo mediante el soporte para \textit{WebWorkers} \cite{hicksonweb} y el almacenamiento de datos persistentes usando la funcionalidad de Web Storage \cite{webstorage}.\\
 Otra interesante capacidad de la biblioteca consiste en la posibilidad de registrar funciones asociadas a eventos sobre el grafo, que ser\'an invocadas por el repositorio cuando una modificaci\'on en el grafo \textit{RDF} satisfaga las condiciones asociadas al evento.\\
 Por \'ultimo, la implementaci\'on \textit{JavaScript} del repositorio permite su ejecuci\'on no s\'olo dentro del navegador web, sino tambi\'en en el lado servidor mediante una plataforma para la ejecuci\'on de aplicaciones \textit{JavaScript} conocida como \textit{Node.JS} que ha ganado una gran popularidad recientemente entre los desarrolladores de aplicaciones web. La figura \ref{figura4} muestra los principales componentes de la biblioteca que implementa el repositorio \textit{RDF}.
+
+\begin{figure}
+\vspace{2.4in}
+\caption{Principales componentes del repositorio \textit{RDF}.}
+\includegraphics[width=0.5\textwidth]{figura4}
+\label{figura4}
+\end{figure}
+
 
 \subsubsection{Almacenamiento persistente y no persistente}
 
@@ -322,7 +513,16 @@ Al nivel de los nodos \textit{RDF}, un cliente puede subscribirse a un nodo \tex
 \subsubsection{Evaluaci\'on de rendimiento}
 
 Como parte final del proceso de desarrollo del repositorio, hemos realizado una evaluaci\'on de rendimiento de la biblioteca utilizando el modelo de evaluaci\'on \textit{LUBM} \cite{lubm} ajustado sus par\'ametros para usar un conjunto de datos peque\~no. La evaluaci\'on se ha realizado para diferentes navegadores web en un equipo port\'atil medio.\\
-Los casos de prueba se han generado autom\'aticamente mediante el generado de datos incluido dentro de \textit{LUBM} y a continuaci\'on se han transformado en \textit{JSON-LD} antes de ser cargados en el navegador para su ejecuci\'on. La cantidad final de tripletes almacenados en un \'unico grafo en el repositorio ha sido de 100545 tripletes. La tabla \ref{tabla12} muestra los resultados obtenidos en milisegundos para las diferentes consultas \textit{LUBM}. Dado que el repositorio no soporta inferencia l\'ogica, algunas consultas en \textit{LUBM} han debido ser re-escritas para utilizar cl\'ausulas \textit{UNION} con el fin de cubrir todos los casos y obtener los resultados correctos esperados. Una consulta adicional que simplemente devuelve todos los tripletes ha sido tambi\'en a\~nadida. El texto de las consultas as\'i como el c\'odigo para ejecutar las consultas forma parte de la distribuci\'on de la biblioteca.
+Los casos de prueba se han generado autom\'aticamente mediante el generado de datos incluido dentro de \textit{LUBM} y a continuaci\'on se han transformado en \textit{JSON-LD} antes de ser cargados en el navegador para su ejecuci\'on. La cantidad final de tripletes almacenados en un \'unico grafo en el repositorio ha sido de 100545 tripletes. La tabla \ref{tabla12} muestra los resultados obtenidos en milisegundos para las diferentes consultas \textit{LUBM}.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Pruebas de rendimiento \textit{LUBM} para el repositorio \textit{RDF}}
+\includegraphics[width=0.8\textwidth]{tabla12}
+\label{tabla12}
+\end{table}
+
+ Dado que el repositorio no soporta inferencia l\'ogica, algunas consultas en \textit{LUBM} han debido ser re-escritas para utilizar cl\'ausulas \textit{UNION} con el fin de cubrir todos los casos y obtener los resultados correctos esperados. Una consulta adicional que simplemente devuelve todos los tripletes ha sido tambi\'en a\~nadida. El texto de las consultas as\'i como el c\'odigo para ejecutar las consultas forma parte de la distribuci\'on de la biblioteca.
 
 \section{Ejemplos de aplicaci\'on}
 
@@ -355,6 +555,14 @@ En el dise\~no del sistema, los siguientes principios b\'asicos fueron seguidos 
 
 La arquitectura del sistema se basa en el modelo arquitect\'onico expuesto en secciones anteriores de este documento. En este apartado expondremos las principales extensiones que de dicho modelo se han llevado a cabo para exponer los diferentes tipos de datos sociales que se pretend\'ian exponer. La figura \ref{figura5} muestra el flujo de informaci\'on a trav\'es de los principales componentes del sistema.\\
 
+\begin{figure}
+\vspace{2.4in}
+\caption{Flujo de informaci\'on en el sistema.}
+\includegraphics[width=0.5\textwidth]{figura5}
+\label{figura5}
+\end{figure}
+
+
 \begin{itemize}
 \item \textbf{Concepci\'on de la aplicaci\'on como un sistema modular.} Cada m\'odulo gestiona la interacci\'on con una red social diferente y se ejecutan de una forma completamente aut\'onoma cooperando a trav\'es del uso de un mecanismos de mensajes y de una ontolog\'ia \textit{RDF} com\'un donde se exponen los tipos de recursos que la extensi\'on va a generar. Gracias a este vocabulario com\'un, el n\'ucleo com\'un de la aplicaci\'on es capaz de integrar esos recurso en la \textit{API} \textit{HTTP}, recuperarlos del repositorio \textit{RDF} y darles el formato adecuado si es necesario.
 \item \textbf{Integraci\'on de la autenticaci\'on \textit{WebID}.} En la definici\'on de la arquitectura de servicios \textit{REST} sem\'anticos expuesta anteriormente no se mencionaron los aspectos de seguridad relativas a la autenticaci\'on del acceso a los recursos expuestos. La aplicaci\'on construida soluciona este problema mediante el uso de \textit{WebID}. Cualquier recurso expuesto a trav\'es de la \textit{API} o tipo de recursos, puede ser marcado como publico, privado o accesible s\'olo por un determinado n\'umero de identidades \textit{WebID}. El sistema se encarga de autenticar la identidad de los usuarios accediendo a los recurso en cada petici\'on \textit{HTTP} realizando el proceso de autenticaci\'on \textit{WebID} y comprobando el grafo \textit{RDF} resultante de a\~nadir la informaci\'on de perfil remoto obtenida con los datos de perfil de usuario mantenidos localmente. Este proceso es completamente \textit{REST} involucrando simplemente la desrefernciaci\'on de la \textit{URI} asociada a la identidad del cliente y la verificaci\'on criptogr\'afica de su validez.
@@ -370,6 +578,15 @@ Como parte de la implementaci\'on del sistema, componentes modulares para los se
 La \textit{API} \textit{HTTP} expuesta soporta peticiones procedentes de clientes \textit{JavaScript} ejecut\'andose en browser desde dominios diferentes a los del servicio gracias a la implementaci\'on del est\'andar de peticiones \textit{cross domain} (\textit{CORS}) \cite{cors} de la \textit{W3C}.\\
 Por \'ultimo, algunas aplicaciones clientes \textit{JavaScript} han sido desarrollados e incluidas en el sistema para consumir la \textit{API} que el servicio expone. Una primera aplicaci\'on administrativa accede a los recursos de perfil y configuraci\'on de la \textit{API} para configurar la informaci\'on de perfil del usuario del servicio as\'i, como las pol\'iticas de acceso a los recursos expuestos y de gesti\'on de la identidad \textit{WebID} del usuario.\\
 La figura \ref{figura6} muestra el aspecto de otra de las aplicaciones incluidas capaz de visualizar el flujo social de una identidad \textit{WebID} alojada en el servicio. Se puede observar como notificaciones generadas por diferentes componentes (Twitter, Github) se mezclan en el flujo social del usuario. \\
+
+\begin{figure}
+\vspace{2.4in}
+\caption{Aplicaci\'on \textit{JavaScript} mostrando el flujo de actividad de un usuario.}
+\includegraphics[width=0.5\textwidth]{figura6}
+\label{figura6}
+\end{figure}
+
+
 Ambas aplicaciones usan nuestro repositorio \textit{RDF} \textit{JavaScript} ejecut\'andose en el navegador para agregar los recursos \textit{REST} sem\'anticos expuestos a trav\'es de la \textit{API} de datos enlazados sem\'anticos y construir con ellos una p\'agina final \textit{HTML} que tambi\'en incorpora la informaci\'on \textit{RDF} extra\'ida mediante el uso del est\'andar \textit{RDFa}.
 
 \subsection{Visualizaci\'on de datos \textit{RDF} en aplicaciones \textit{JavaScript}}
@@ -389,6 +606,21 @@ La biblioteca construida extiende las operaciones cl\'asicas de este tipo de gra
 \end{itemize}
 
 La tabla \ref{tabla13} muestra la sintaxis final de la biblioteca, mostrando como el vocabulario de la gram\'atica puede usarse para construir una visualizaci\'on. La figura \ref{figura7} muestra el resultado final de esa misma descripci\'on.\\
+
+\begin{table}
+\vspace{2.4in}
+\caption{Definici\'on de una visualizaci\'on usando la gram\'atica de gr\'aficos.}
+\includegraphics[width=0.8\textwidth]{tabla13}
+\label{tabla13}
+\end{table}
+
+\begin{figure}
+\vspace{2.4in}
+\caption{Visualizaci\'on generada por la biblioteca a partir del c\'odigo de la tabla \ref{tabla13}}
+\includegraphics[width=0.5\textwidth]{figura7}
+\label{figura7}
+\end{figure}
+
 Se puede observar como la funci\'on \textit{struct} introduce una estructura de datos de destino para los nodos \textit{RDF} recuperados por una consulta \textit{SPARQL}. A su vez, la funci\'on \textit{bind} realiza el \textit{join} entre datos y marcas visuales, usando para ello las propiedades \textit{RDF} de los nodos recuperados que son asignadas a diferentes valores de las propiedades de la marca.
 
 \subsubsection{Dise\~no e implementaci\'on}

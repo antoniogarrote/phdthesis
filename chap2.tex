@@ -55,6 +55,27 @@ Este conjunto de principios arquitecturales se encuentran ya definidos en docume
 
 
 La tabla \ref{restvsws} muestra las principales diferencias entre las propuestas arquitecturales \textit{REST} y \textit{WS-*}.\\
+
+\begin{table}
+\centering
+\caption{Comparativa de estilos arquitecturales \textit{REST} y \textit{WS-*}.}
+\label{restvsws}
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+\textbf{\textit{WS-*}} & \textbf{\textit{REST}} \\\hline
+Cuerpo cerrado de est\'andares. & Estilo de arquitectura. \\
+Orientada a la invocaci\'on remota de procedimientos. & Orientada a recursos. \\
+Interfaz variable. & Interfaz uniforme.\\
+Uso de HTTP opcional. & HTTP es el \'unico protocolo. \\
+Descubrimiento centralizado. & Descubrimiento a trav\'es de enlaces.\\
+Uso de identificadores dependientes del contexto. & Uso de identificadores globales.\\
+Puede almacenar estado. & No almacena estado. \\
+Permite la descripci\'on de recursos. & Los recursos son auto-descriptivos.\\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
 C\'omo se puede observar, las principales diferencias vienen dadas por diferencias en principios conceptuales b\'asicos entre ambos enfoques. Por un lado, la concepci\'on del servicio web como una invocaci\'on de una operaci\'on remota arbitraria, en el caso de los servicios \textit{WS-*}, frente al servicio web como una petici\'on \textit{HTTP} est\'andar para recuperar o modificar un recurso usando de una forma estricta la sem\'antica del protocolo \textit{HTTP} en el caso de los servicios \textit{REST}. En comparaci\'on, los servicios \textit{WS-*} usan una sem\'antica variable para las invocaciones \textit{HTTP}, que hace obligatoria la introducci\'on de meta-datos y meta-servicios adicionales como \textit{UDDI}, aumentando de esta forma la complejidad de la implementaci\'on de soluciones \textit{WS-*}.\\
 El resultado \'ultimo de la aparici\'on de la propuesta arquitectural \textit{REST} en el panorama de las arquitecturas orientadas a servicios fue que diferentes sistemas de computaci\'on empresarial basadas en soluciones \textit{WS-*} empezaron a ser reemplazados por soluciones construidas usando servicios web \textit{REST}. Sin embargo, algunos patrones de integraci\'on en aplicaciones empresariales no son f\'acilmente traducibles usando los principios arquitect\'onicos \textit{REST}, como por ejemplo, la distribuci\'on as\'incrona y confiable de mensajes o los escenarios composici\'on de servicios y descripci\'on de flujos de procesos de negocio \cite{pautasso2008restful}. Para poder implementar algunos de estos casos de uso usando servicios web \textit{REST}, es necesario recurrir a est\'andares adicionales como \textit{WADL} \cite{wadl} para la descripci\'on de los recursos. En estos casos las soluciones \textit{WS-*} siguen siendo usadas profusamente.\\
 Al mismo tiempo, la propia pila de protocolos y est\'andares \textit{WS-*} ha venido incorporando ideas y conceptos \textit{REST} con el fin de ofrecer soluciones m\'as simples y escalables, por ejemplo la versi\'on 2.0 de \textit{WSDL} introduce soporte para describir servicios \textit{WS-*} implementados sobre servicios web \textit{REST} \cite{takase2008definition}.\\
