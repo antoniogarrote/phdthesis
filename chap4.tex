@@ -6,18 +6,22 @@ En todos los casos haremos un breve repaso de los problemas que el actual estado
 
 \section{Evaluaci\'on de rendimiento del Repositorio RDF para aplicaciones JavaScript}
 
-En el cap\'itulo anterior \cite{sec:rdfstorejs} se describi\'o la implementaci\'on de un repositorio RDF \textit{SPARQL 1.1 Update} para aplicaciones \textit{JavaScript}.
+En el cap\'itulo anterior (\ref{sec_rdfstorejs}) se describi\'o la implementaci\'on de un repositorio RDF \textit{SPARQL 1.1 Update} para aplicaciones \textit{JavaScript}.
 Como parte final del proceso de desarrollo del repositorio, hemos realizado una evaluaci\'on de rendimiento de la biblioteca utilizando el modelo de evaluaci\'on \textit{LUBM} \cite{lubm} ajustado sus par\'ametros para usar un conjunto de datos peque\~no, m\'as adecuado al volumen de datos con el que debe tratar una aplicaci\'on web \textit{JavaScript}. La evaluaci\'on se ha realizado para diferentes navegadores web en un equipo port\'atil medio.\\
 Los casos de prueba se han construido autom\'aticamente mediante el software generador de datos incluido dentro de \textit{LUBM} y a continuaci\'on se han transformado en \textit{JSON-LD} antes de ser cargados en el navegador para su ejecuci\'on. La cantidad final de tripletes almacenados en un \'unico grafo en el repositorio ha sido de 100.545 tripletes. La tabla \ref{tabla12} muestra los resultados obtenidos en milisegundos para las diferentes consultas \textit{LUBM}.\\
 
 \begin{table}
 \vspace{2.4in}
+\centering
 \caption{Pruebas de rendimiento \textit{LUBM} para el repositorio \textit{RDF}}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla12}
 \label{tabla12}
 \end{table}
 
  Dado que el repositorio no soporta inferencia l\'ogica, algunas consultas en \textit{LUBM} han debido ser re-escritas para utilizar cl\'ausulas \textit{UNION} con el fin de cubrir todos los casos y obtener los resultados correctos esperados. Una consulta adicional que simplemente devuelve todos los tripletes ha sido tambi\'en a\~nadida. El texto de las consultas as\'i como el c\'odigo para ejecutar las consultas forma parte de la distribuci\'on de la biblioteca.
+En los resultados se puede apreciar como la mayor\'ia de las consultas son evaluadas en un tiempo inferior al segundo. Siendo este el umbral m\'aximo de tiempo que consideramos aceptable para construir aplicaciones cliente que puedan ser utilizadas por el usuario final de una forma aceptable, adem\'as, el volumen de datos consultados y almacenados en el repositorio para las pruebas, es muy superior al volumen normal de tripletes que almacena una aplicaci\'on cliente de escritorio t\'ipica.
+Realizando pruebas de carga con diferentes volumenes de datos, nos permite comprobar como el tiempo de las consultas se incrementa linealmente con el n\'umero de tripletes almacenados en el repositorio. Por \'ultimo, cabe destacar que un elemento decisivo para el rendimiento de la biblioteca es el motor \textit{JavaScript} del navegador web en el que se ejecuta la prueba. Diferentes navegadores con diferentes implementaciones de \textit{JavaScript} ofrecen rendimientos muy dispares para los mismos datos e implementaciones de la biblioteca. Esto puede suponer un problema a la hora de construir una aplicacion con un comportamiento predecible en diferentes plataformas. Por otro lado, el incremento en el rendimiento de los motores \textit{JavaScript} presentes en los actuales navegadores web es una de las principales preocupaciones de los fabricantes de dichos navegadores, con lo que es sensato esperar mejoras importantes en el rendimiento de estos motores y por lo tanto de la biblioteca y aplicaciones construidas sobre ella en el futuro cercano.
 
 
 \section{Un servidor personal de datos enlazados sem\'anticos para la Web Social}
@@ -46,9 +50,10 @@ En el dise\~no del sistema, los siguientes principios b\'asicos fueron seguidos 
 La arquitectura del sistema se basa en el modelo arquitect\'onico expuesto en secciones anteriores de este documento. En este apartado expondremos las principales extensiones que de dicho modelo se han llevado a cabo con el fin de publicar los diferentes tipos de datos sociales que se pretend\'ian compartir. La figura \ref{figura5} muestra el flujo de informaci\'on a trav\'es de los principales componentes del sistema.\\
 
 \begin{figure}
-\vspace{2.4in}
+\centering
 \caption{Flujo de informaci\'on en el sistema.}
-\includegraphics[width=0.5\textwidth]{figura5}
+\vspace{5mm}
+\includegraphics[width=1\textwidth]{figura5}
 \label{figura5}
 \end{figure}
 
@@ -71,8 +76,10 @@ La figura \ref{figura6} muestra el aspecto de otra de las aplicaciones incluidas
 
 \begin{figure}
 \vspace{2.4in}
+\centering
 \caption{Aplicaci\'on \textit{JavaScript} mostrando el flujo de actividad de un usuario.}
-\includegraphics[width=0.5\textwidth]{figura6}
+\vspace{5mm}
+\includegraphics[width=1\textwidth]{screenshot}
 \label{figura6}
 \end{figure}
 
@@ -100,14 +107,17 @@ La tabla \ref{tabla13} muestra la sintaxis final de la biblioteca, mostrando com
 \begin{table}
 \vspace{2.4in}
 \caption{Definici\'on de una visualizaci\'on usando la gram\'atica de gr\'aficos.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla13}
 \label{tabla13}
 \end{table}
 
 \begin{figure}
 \vspace{2.4in}
+\centering
 \caption{Visualizaci\'on generada por la biblioteca a partir del c\'odigo de la tabla \ref{tabla13}}
-\includegraphics[width=0.5\textwidth]{figura7}
+\vspace{5mm}
+\includegraphics[width=0.8\textwidth]{figura7}
 \label{figura7}
 \end{figure}
 

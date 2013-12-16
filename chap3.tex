@@ -66,19 +66,21 @@ Una definici\'on exacta de la sintaxis y sem\'antica operacional del c\'alculo, 
 \begin{table}
 \vspace{2.4in}
 \caption{Sintaxis formal del calculo relativa al espacio de tripletes y elementos b\'asicos.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla1}
 \label{tabla1}
 \end{table}
 
+La sem\'antica operacional del c\'alculo para la sintaxis formal aqu\'i introducida sigue formalizaciones anteriores propuestas para otros sistemas de espacios de tuplas de tipo Linda \cite{linda}. En particular, hemos elegido una sem\'antica con ordenaci\'on para las operaciones sobre el espacio de tripletes. Como consecuencia, la emisi\'on y aplicaci\'on de mensajes se puede considerar como una \'unica operaci\'on at\'omica. Se puede demostrar que los sistemas de tipo Linda con semanticas con con ordenaci\'on son Turing completos \cite{busi2000expressiveness}.\\
 
 \begin{table}
 \vspace{2.4in}
 \caption{Sem\'antica operacional del calculo relativa al espacio de tripletes y operaciones b\'asicas.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla2}
 \label{tabla2}
 \end{table}
 
-La sem\'antica operacional del c\'alculo para la sintaxis formal aqu\'i introducida sigue formalizaciones anteriores propuestas para otros sistemas de espacios de tuplas de tipo Linda \cite{linda}. En particular, hemos elegido una sem\'antica con ordenaci\'on para las operaciones sobre el espacio de tripletes. Como consecuencia, la emisi\'on y aplicaci\'on de mensajes se puede considerar como una \'unica operaci\'on at\'omica. Se puede demostrar que los sistemas de tipo Linda con semanticas con con ordenaci\'on son Turing completos \cite{busi2000expressiveness}.\\
 La sem\'antica operacional descrita en la tabla \ref{tabla2}, define una relaci\'on ($\rightarrow$) para las operaciones como la m\'as simple interpretaci\'on que satisface las reglas ($1$) – ($10$). De \'estas, las comprendidas entre la regla ($4$)  y la regla ($6$) definen las principales operaciones sobre espacios de tripletes que modifican los tripletes almacenados.\\
 La regla ($7$) muestra la sem\'antica de la operaci\'on \textit{swap} como una combinaci\'on en un s\'olo paso de reducci\'on de la sem\'antica de las operaciones \textit{in} y out. Por su parte, las reglas ($8$) y ($9$) definen las sem\'antica para la operaci\'on \textit{notify}. Mostrando su relaci\'on con las operaciones \textit{in}, \textit{out} y con el patr\'on pasado como argumento a la operaci\'on \textit{notify} aplicad a los tripletes insertados o eliminados por las operaciones \textit{in} y \textit{out}.\\
 
@@ -106,12 +108,13 @@ Adem\'as de estas primitivas para la creaci\'on y composici\'on de procesos, el 
 \begin{table}
 \vspace{2.4in}
 \caption{Sem\'antica operacional del c\'alculo relativa a la comunicaci\'on entre procesos.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla3}
 \label{tabla3}
 \end{table}
 
 En dichas operaciones, los mensajes pueden ser enviados a trav\'es canales con nombre representados como \textit{URIs} ($\mu$). Los mensajes pueden ser de dos tipos, peticiones ($req$) o respuestas ($resp$) y los procesos pueden enviar y recibir ambos tipos de mensajes. A su vez, los mensajes se componen de un m\'etodo ($m$), un patr\'on ($p$) y un valor ($v$) en el caso de las peticiones y de un valor ($v$) y un c\'odigo ($c$) en el caso de las respuestas. Adicionalmente, tambi\'en se define una operaci\'on para introducir un nuevo identificador (\textit{URI}) en la computaci\'on. ($new\, \mu\, in\,P$).\\
-La sem\'antica operacional para estas operaciones se introduce en la tabla \ref{tabla3} de acuerdo con la sem\'antica definida en el C\'alculo Pi Poli\'adico. Las reglas ($11$) y ($12$) son una adaptaci\'on a la sintaxis de nuestro c\'alculo de la regla de comunicaci\'on del C\'alculo Pi, mostrando la reacci\'on entre procesos enviando y recibiendo mensajes. Las reglas ($13$) y ($14$), imponen restricciones sobre el orden en que peticiones y respuestas deben ser intercambiados. Seg\'un la sem\'antica definida, sin un proceso env\'ia un mensaje con una petici\'on a otro proceso, debe esperar un mensaje con una respuesta  tras un n\'umero finito de reducciones a trav\'es del mismo \textit{URI}. De modo sim\'etrico, si un proceso recibe una petici\'on a trav\'es de un \textit{URI} debe enviar una respuesta tras un cierto n\'umero de reducciones.\\
+La sem\'antica operacional para estas operaciones se introduce en la tabla \ref{tabla3} de acuerdo con la sem\'antica definida en el C\'alculo Pi Poli\'adico. Las reglas ($11$) y ($12$) son una adaptaci\'on a la sintaxis de nuestro c\'alculo de la regla de comunicaci\'on del C\'alculo Pi, mostrando la reacci\'on entre procesos enviando y recibiendo mensajes. Las reglas ($13$) y ($14$), imponen restricciones sobre el orden en que peticiones y respuestas deben ser intercambiados. Seg\'un la sem\'antica definida, sin un proceso env\'ia un mensaje con una petici\'on a otro proceso, debe esperar un mensaje con una respuesta  tras un n\'umero finito de reducciones a trav\'es del mismo \textit{URI}. De modo sim\'etrico, si un proceso recibe una petici\'on a trav\'es de un \textit{URI} debe enviar una respuesta tras un cierto n\'umero de reducciones.
 
 Esta sem\'antica permite modelar de una forma m\'as \'util en el c\'alculo las peticiones \textit{HTTP} a recursos \textit{REST} sem\'anticos como mensajes de petici\'on enviados a procesos a trav\'es de canales definidos como \textit{URIs} a recursos \textit{REST}. Estos mensajes consisten en un m\'etodo m\'as un patr\'on o tripletes y la respuestas vendr\'ian dadas por un c\'odigo de respuesta m\'as un conjunto de tripletes. Es posible crear nuevos recursos \textit{REST} sem\'anticos como resultado de peticiones POST asociados a nuevos \textit{URIs} introducidos en la computaci\'on y su ejecuci\'on podr\'ia terminar como resultado de una petici\'on DELETE. El sistema compuesto por estos recursos \textit{REST} sem\'anticos ser\'ia un c\'alculo de procesos m\'obiles dado que en los mensajes de respuesta provenientes de un recurso, podr\'ian encontrarse \textit{URIs} asociados a diferentes recursos.
 
@@ -138,6 +141,7 @@ Usando este modelo, una posible formalizaci\'on param\'etrica de un proceso sem\
 \begin{table}
 \vspace{2.4in}
 \caption{Descripci\'on param\'etrica de un recurso \textit{REST} sem\'antico simple.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla4}
 \label{tabla4}
 \end{table}
@@ -151,7 +155,9 @@ La Figura \ref{figura1} muestra una representaci\'on gr\'afica de un posible mod
 
 \begin{figure}
 \vspace{2.4in}
+\centering
 \caption{Ejemplo de computaci\'on \textit{REST} sem\'antica.}
+\vspace{5mm}
 \includegraphics[width=0.5\textwidth]{figura1}
 \label{figura1}
 \end{figure}
@@ -182,12 +188,69 @@ De forma adicional, introduciremos algunas caracter\'isticas convenientes que no
 
 En la tabla \ref{tabla5} se encuentra la descripci\'on \textit{RDF} de un ejemplo de servicio web \textit{REST} sem\'antico, que se almacenar\'a en una base de datos relacional, de acuerdo con el modelo de servicio web que proponemos.\\
 
-\begin{table}
-\vspace{2.4in}
-\caption{Descripci\'on \textit{RDF} de un servicio \textit{REST} sem\'antico.}
-\includegraphics[width=0.8\textwidth]{tabla5}
-\label{tabla5}
-\end{table}
+% \begin{table}
+% \vspace{2.4in}
+% \caption{Descripci\'on \textit{RDF} de un servicio \textit{REST} sem\'antico.}
+% \includegraphics[width=0.8\textwidth]{tabla5}
+% \label{tabla5}
+% \end{table}
+
+\lstset{caption=Descripci\'on \textit{RDF} de un servicio \textit{REST} sem\'antico.,label=tabla5, captionpos=b,basicstyle=\small}
+\begin{lstlisting}
+@prefix testblog: <http://example.org/blog#> .
+@prefix lda: <http://restful_linked_data_api.org#> .
+@prefix api: <http://purl.org/linked-data/api/vocab#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix sioct: <http://rdfs.org/sioc/types#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+testblog:
+  a lda:API ;
+  lda:exposes testblog:blogs, testblog:blog .
+
+testblog:blogs
+  a lda:Resource ;
+  api:uriTemplate "http://testblog.org/lodapi/blogs" ;
+  lda:endpoint
+  [ a lda:R2RMLSparqlEndpoint ;
+    lda:has_r2rml_mapping testblog:bogsMapping ;
+    lda:has_r2rml_graph rr:columnGraphIRI ];
+  lda:has_operation lda:GET, lda:POST ;
+  lda:named_graph_creation_mechanism testblog:blogsMappingUriMinter .
+
+testblog:blogsMappingUriMinter
+  a lda:NamedGraphCreationMechanism ;
+  lda:uri_template "http://testblog.org/lodapi/blogs/{id}" ;
+  lda:mapped_uri_parts
+  [ lda:mapped_component_value "id" ;
+    lda:uri_generator lda:UniqueIdInt ] .
+
+testblog:blog
+  a lda:Resource ;
+  api:uriTemplate "http://testblog.org/lodapi/blogs/{id}" ;
+  lda:endpoint
+  [ a lda:R2RMLSparqlEndpoint ;
+    lda:hasR2RMLMapping testblog:blogsMapping ;
+    lda:hasR2RMLGraph rr:columnGraph ];
+  lda:has_operation lda:GET, lda:PUT, lda:DELETE .
+
+testblog:blogsMapping
+  a rr:TriplesMap ;
+  rr:logicalTable "blogs" ;
+  rr:class sioct:Weblog ;
+  rr:subjectMap [ a rr:IRIMap;
+                  rr:column "id" ];
+  rr:propertyObjectMap [ rr:property dc:creator;
+                         rr:column "author" ];
+  rr:propertyObjectMap [ rr:property dc:title;
+                         rr:column "title" ];
+  rr:propertyObjectMap [ rr:property dcterms:created;
+                         rr:column "created_at" ;
+                         rr:datatype xsd:dateTime ].
+\end{lstlisting}
+
 
 Esta descripci\'on describe dos aspectos b\'asicos del modelo de servicio:
 
@@ -233,6 +296,7 @@ La sintaxis de la consulta \textit{CONSTRUCT} \textit{SPARQL} se muestra en la t
 \begin{table}
 \vspace{2.4in}
 \caption{Consulta \textit{SPARQL} para una peticion \textit{HTTP} \textit{GET}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla6}
 \label{tabla6}
 \end{table}
@@ -249,6 +313,7 @@ La sintaxis de la consulta \textit{SPARQL} UPDATE se muestra en la tabla \ref{ta
 \begin{table}
 \vspace{2.4in}
 \caption{Consulta \textit{SPARQL} para una petici\'on \textit{HTTP} \textit{POST}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla7}
 \label{tabla7}
 \end{table}
@@ -259,6 +324,7 @@ La siguiente tabla \ref{named_graph_vs_resource_uri} muestra las diferencias ent
 \begin{table}
 \centering
 \caption{\textit{Grafos con nombre} frente a recursos \textit{RDF}.}
+\vspace{5mm}
 \label{named_graph_vs_resource_uri}
 \begin{center}
 \begin{tabular}{|l|l|}\hline
@@ -297,6 +363,7 @@ Esta sem\'antica queda recogida en la combinaci\'on de consultas \textit{SPARQL 
 \begin{table}
 \vspace{2.4in}
 \caption{Consulta \textit{SPARQL} para una petici\'on \textit{HTTP} \textit{PUT}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla8}
 \label{tabla8}
 \end{table}
@@ -310,6 +377,7 @@ Por \'ultimo, las peticiones \textit{HTTP} \textit{DELETE} se traducen como peti
 \begin{table}
 \vspace{2.4in}
 \caption{Consulta \textit{SPARQL} para una petici\'on \textit{HTTP} \textit{DELETE}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla9}
 \label{tabla9}
 \end{table}
@@ -348,6 +416,7 @@ Como vimos en el cap\'itulo dedicado al estado del arte en este documento, una d
 \begin{table}
 \vspace{2.4in}
 \caption{Sintaxis \textit{EBNF} de \textit{R2RML}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla10}
 \label{tabla10}
 \end{table}
@@ -360,6 +429,7 @@ Por su parte, el est\'andar \textit{SPARQL 1.1 Update} describe un lenguaje com\
 \begin{table}
 \vspace{2.4in}
 \caption{Sintaxis de los \textit{QuadPatterns}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{tabla11}
 \label{tabla11}
 \end{table}
@@ -369,8 +439,10 @@ Por su parte, el est\'andar \textit{SPARQL 1.1 Update} describe un lenguaje com\
 
 \begin{figure}
 \vspace{2.4in}
+\centering
 \caption{Diferentes transformaciones codificadas en un documento \textit{R2RML}}
-\includegraphics[width=0.5\textwidth]{figura2}
+\vspace{5mm}
+\includegraphics[width=0.8\textwidth]{figura2}
 \label{figura2}
 \end{figure}
 
@@ -380,6 +452,7 @@ El algoritmo descrito en la tabla \ref{alg1}, especifica en la funci\'on \textit
 \begin{table}
 \vspace{2.4in}
 \caption{Algoritmo 1: Construcci\'on de \textit{QuadMatcher} para una tranformaci\'on \textit{R2RML}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{algoritmo1}
 \label{alg1}
 \end{table}
@@ -389,6 +462,7 @@ El listado del algoritmo mostrado en la tabla \ref{alg2} describe a su vez un pr
 \begin{table}
 \vspace{2.4in}
 \caption{Algoritmo 2: Procedimiento para comprobar si un \textit{QuadPattern} y un \textit{QuadMatcher} son compatibles.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{algoritmo2}
 \label{alg2}
 \end{table}
@@ -403,6 +477,7 @@ En el algoritmo de la tabla \ref{alg3} se muestra un procedimiento para transfor
 \begin{table}
 \vspace{2.4in}
 \caption{Algoritmo 3: Composici\'on de una consulta \textit{SELECT} para un \textit{QuadPattern} y un conjunto de \textit{QuadMatchers}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{algoritmo3}
 \label{alg3}
 \end{table}
@@ -415,6 +490,7 @@ El la tabla \ref{alg4} contiene un algoritmo, que  muestra un procedimiento para
 \begin{table}
 \vspace{2.4in}
 \caption{Algoritmo 4: Inserci\'on de un \textit{QuadPattern} para un conjunto de \textit{QuadMatchers}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{algoritmo4}
 \label{alg4}
 \end{table}
@@ -426,6 +502,7 @@ Como muestra la figura \ref{figura3}, el algoritmo propuesto funciona construyen
 \begin{figure}
 \vspace{2.4in}
 \caption{Inserci\'on de dos \textit{quads}}
+\vspace{5mm}
 \includegraphics[width=0.5\textwidth]{figura3}
 \label{figura3}
 \end{figure}
@@ -433,6 +510,7 @@ Como muestra la figura \ref{figura3}, el algoritmo propuesto funciona construyen
 \begin{table}
 \vspace{2.4in}
 \caption{Algoritmo 5: M\'etrica de coste.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{algoritmo5}
 \label{alg5}
 \end{table}
@@ -446,6 +524,7 @@ El algoritmo de la tabla \ref{alg6} describe un procedimiento para eliminar los 
 \begin{table}
 \vspace{2.4in}
 \caption{Algoritmo 6: Composici\'on de una consulta para eliminar un \textit{QuadPattern} para un conjunto de \textit{QuadMatchers}.}
+\vspace{5mm}
 \includegraphics[width=0.8\textwidth]{algoritmo6}
 \label{alg6}
 \end{table}
@@ -454,7 +533,7 @@ El algoritmo de la tabla \ref{alg6} describe un procedimiento para eliminar los 
 Tras eliminar todos los quads, la funci\'on removeEmptyRows elimina todas aquellas filas en las tablas de la transformaci\'on \textit{R2RML} donde todos los valores para las columnas propiedad y objeto tienen valores nulos.
 
 \subsection{Un repositorio \textit{RDF} \textit{SPARQL 1.1 Update} para aplicaciones \textit{JavaScript}}
-\label{sec:rdfstorejs}
+\label{sec_rdfstorejs}
 
 En secciones anteriores de este cap\'itulo hemos expuesto c\'omo, desde el punto de vista formal, una computaci\'on basada en recursos \textit{REST} sem\'anticos involucra tanto a procesos recurso, que exponen datos sem\'anticos a trav\'es de canales identificados con \textit{URIs} como a procesos agente, que aunque no pueden ser accedidos directamente a trav\'es de \textit{URIs}, son capaces de consumir los datos sem\'anticos expuestos por los servicios y hacer avanzar la computaci\'on bas\'andose en los datos recuperados.\\
 En la descripci\'on de la arquitectura que puede usarse para implementar el modelo te\'orico propuesto hemos hecho hincapi\'e en la parte servidor de la computaci\'on, sin entrar en los requisitos arquitecturales necesarios para implementar un proceso agente capaz de consumir y tomar decisiones basadas en la informaci\'on sem\'antica recuperada.\\
@@ -475,8 +554,10 @@ Por \'ultimo, la implementaci\'on \textit{JavaScript} del repositorio permite su
 
 \begin{figure}
 \vspace{2.4in}
+\centering
 \caption{Principales componentes del repositorio \textit{RDF}.}
-\includegraphics[width=0.5\textwidth]{figura4}
+\vspace{5mm}
+\includegraphics[width=0.8\textwidth]{figura4}
 \label{figura4}
 \end{figure}
 
